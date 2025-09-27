@@ -6,7 +6,7 @@
 /*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 16:17:38 by fionni            #+#    #+#             */
-/*   Updated: 2025/09/27 16:22:56 by fionni           ###   ########.fr       */
+/*   Updated: 2025/09/27 17:47:34 by fionni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "../ft_printf/ft_printf.h"
-# include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 
 typedef struct s_stack_node
