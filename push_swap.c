@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/27 16:10:28 by fionni            #+#    #+#             */
+/*   Updated: 2025/09/27 16:20:11 by fionni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	build_stack(int argc, char **argv, t_stack_node **a)
@@ -46,7 +58,7 @@ int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
-	int			count;
+	int				count;
 
 	if (argc < 2)
 		return (0);

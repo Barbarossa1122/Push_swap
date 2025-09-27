@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_args_utils_1.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/27 16:09:39 by fionni            #+#    #+#             */
+/*   Updated: 2025/09/27 16:09:39 by fionni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_number(char *str)
@@ -7,7 +19,7 @@ int	is_number(char *str)
 	i = 0;
 	if (str[0] == '-' || str[0] == '+')
 		i++;
-	if(!str[i])
+	if (!str[i])
 		return (0);
 	while (str[i])
 	{
@@ -31,7 +43,7 @@ char	**join_and_split(int argc, char **argv)
 	return (tokens);
 }
 
-int has_duplicates(int *arr, int size)
+int	has_duplicates(int *arr, int size)
 {
 	int	i;
 	int	j;
@@ -53,7 +65,7 @@ int has_duplicates(int *arr, int size)
 
 void	free_split(char **tab)
 {
-	int i;
+	int	i;
 
 	if (!tab)
 		return ;
@@ -68,7 +80,7 @@ void	free_split(char **tab)
 
 void	ps_puterr(const char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return ;

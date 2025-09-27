@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_sorting_utils.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/27 16:10:22 by fionni            #+#    #+#             */
+/*   Updated: 2025/09/27 16:13:24 by fionni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	*stack_to_array(t_stack_node *a, int n)
 {
-	int			i;
-	int			*arr;
+	int				i;
+	int				*arr;
 	t_stack_node	*cur;
 
 	arr = (int *)malloc(sizeof(int) * n);
@@ -68,7 +80,7 @@ static void	bubble_sort(int *arr, int n)
 
 static void	assign_indices(t_stack_node *a, int *sorted, int n)
 {
-	int			i;
+	int				i;
 	t_stack_node	*cur;
 
 	cur = a;

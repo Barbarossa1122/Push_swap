@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_sort_4&5.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/27 16:10:20 by fionni            #+#    #+#             */
+/*   Updated: 2025/09/27 16:10:20 by fionni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	find_min_pos(t_stack_node *a)
 {
-	int             pos;
-	int             best_pos;
-	int             best_val;
-	t_stack_node    *cur;
+	int				pos;
+	int				best_pos;
+	int				best_val;
+	t_stack_node	*cur;
 
 	best_val = a->nbr;
 	best_pos = 0;

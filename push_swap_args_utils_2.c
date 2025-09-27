@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_args_utils_2.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/27 16:09:51 by fionni            #+#    #+#             */
+/*   Updated: 2025/09/27 16:16:48 by fionni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	init_sign_state(const char *s, int *sign, int *i)
@@ -21,7 +33,7 @@ static int	accumulate_digit(long *res, char c, int sign)
 		return (0);
 	*res = *res * 10 + (c - '0');
 	if ((sign == 1 && *res > (long)INT_MAX)
-		|| (sign == -1 && -*res < (long)INT_MIN))
+		|| (sign == -1 && - *res < (long)INT_MIN))
 		return (0);
 	return (1);
 }
@@ -82,5 +94,3 @@ char	*join_args(int argc, char **argv)
 	}
 	return (acc);
 }
-
-

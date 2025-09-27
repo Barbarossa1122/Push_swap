@@ -6,117 +6,86 @@
 /*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:44:22 by fionni            #+#    #+#             */
-/*   Updated: 2024/12/31 15:38:33 by fionni           ###   ########.fr       */
+/*   Updated: 2025/01/02 00:00:00 by fionni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	free_array(char **ptr, int i)
+static void	free_split(char **ptr, size_t size)
 {
-	while (i > 0)
+	while (size > 0)
 	{
-		i--;
-		free(ptr[i]);
+		size--;
+		free(ptr[size]);
 	}
 	free(ptr);
 }
 
-static int	ft_count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	count;
+	int		in_word;
 
-	i = 0;
 	count = 0;
-	while (s[i] != '\0')
+	in_word = 0;
+	while (*s)
 	{
-		if (s[i] == c)
-			i++;
-		else
+		if (*s == c)
+			in_word = 0;
+		else if (!in_word)
 		{
+			in_word = 1;
 			count++;
-			while (s[i] != '\0' && s[i] != c)
-				i++;
 		}
+		s++;
 	}
 	return (count);
 }
 
-static char	*ft_write_word(char *dest, char const *src, char c, int i)
+static char	*extract_word(char const **s, char c)
 {
-	int	j;
+	size_t		len;
+	char const	*start;
+	char		*word;
 
-	j = 0;
-	while (src[i] && src[i] != c)
-	{
-		dest[j] = src[i];
-		i++;
-		j++;
-	}
-	dest[j] = '\0';
-	return (dest);
-}
-
-static char	**ft_split_part(char const *s, char c, char **m, int tot_words)
-{
-	int	i;
-	int	i_matrix;
-	int	len_word;
-
-	i = 0;
-	i_matrix = 0;
-	while (i_matrix < tot_words)
-	{
-		len_word = 0;
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] && s[i] != c)
-		{
-			i++;
-			len_word++;
-		}
-		m[i_matrix] = (char *)malloc((len_word + 1) * (sizeof(char)));
-		if (!m[i_matrix])
-		{
-			free_array(m, i_matrix);
-			return (NULL);
-		}
-		ft_write_word(m[i_matrix], s, c, (i - (len_word)));
-		len_word = 0;
-		i_matrix++;
-	}
-	m[i_matrix] = NULL;
-	return (m);
+	while (**s && **s == c)
+		(*s)++;
+	start = *s;
+	while (**s && **s != c)
+		(*s)++;
+	len = (size_t)(*s - start);
+	word = (char *)malloc((len + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	ft_memcpy(word, start, len);
+	word[len] = '\0';
+	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	tot_words;
-	char	**matrix;
+	size_t	total;
+	size_t	i;
+	char	**out;
 
+	i = 0;
 	if (!s)
-		return (0);
-	tot_words = ft_count_words(s, c);
-	matrix = (char **)malloc((tot_words + 1) * sizeof (char *));
-	if (!matrix)
 		return (NULL);
-	matrix = ft_split_part(s, c, matrix, tot_words);
-	return (matrix);
+	total = count_words(s, c);
+	out = (char **)malloc((total + 1) * sizeof(char *));
+	if (!out)
+		return (NULL);
+	while (i < total)
+	{
+		out[i] = extract_word(&s, c);
+		if (!out[i])
+		{
+			free_split(out, i);
+			return (NULL);
+		}
+		i++;
+	}
+	out[i] = NULL;
+	return (out);
 }
-
-/*
-int main(void)
-{
-    char *input = "hellocworldccvvvv";
-    char **words = ft_split(input, 'c');
-    int i = 0;
-
-    while (words && words[i])
-    {
-        printf("word[%d]: %s\n", i, words[i]);
-        i++;
-    }
-    return 0;
-}
-*/

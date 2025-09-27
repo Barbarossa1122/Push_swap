@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_args_utils_3.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/27 16:09:58 by fionni            #+#    #+#             */
+/*   Updated: 2025/09/27 16:09:58 by fionni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	count_tokens(char **tokens)
@@ -47,6 +59,7 @@ int	parse_input(int argc, char **argv, int **out_values)
 	char	**tokens;
 	int		count;
 	int		*vals;
+
 	if (!out_values)
 		return (-1);
 	*out_values = NULL;
